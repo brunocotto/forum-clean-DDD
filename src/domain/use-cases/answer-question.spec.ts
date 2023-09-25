@@ -1,12 +1,12 @@
-import { expect, test } from 'vitest';
-import { AnswerQuestionUseCase } from './answer-question';
+import { expect, test } from 'vitest'
+import { AnswerQuestionUseCase } from './answer-question'
 
 test('create an answer', () => {
   const answerQuestion = new AnswerQuestionUseCase();
 
   const answer = answerQuestion.execute({
-    questionID: '1',
-    instructorID: '1',
+    questionId: '1',
+    instructorId: '1',
     content: 'Nova resposta'
   });
 

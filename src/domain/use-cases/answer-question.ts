@@ -1,14 +1,18 @@
-import { Answer } from "../entities/answer";
+import { Answer } from "../entities/answer"
 
 interface AnswerQuestionUseCaseRequest {
-  instructorID: string;
-  questionID: string;
-  content: string;
+  instructorId: string
+  questionId: string
+  content: string
 }
 
 export class AnswerQuestionUseCase {
-  execute({ instructorID, questionID, content }: AnswerQuestionUseCaseRequest) {
-    const answer = new Answer(content)
+  execute({ instructorId, questionId, content }: AnswerQuestionUseCaseRequest) {
+    const answer = new Answer({
+      authorId: instructorId,
+      questionId,
+      content
+    })
 
     return answer
   }
