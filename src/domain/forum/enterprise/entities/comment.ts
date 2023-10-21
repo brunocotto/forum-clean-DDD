@@ -3,10 +3,9 @@ import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
 export interface CommentProps {
   authorId: UniqueEntityId
-  answerId: UniqueEntityId
   content: string
   createdAt: Date
-  updatedAt: Date
+  updatedAt?: Date
 }
 
 export abstract class Comment<Props extends CommentProps> extends Entity<Props> {
