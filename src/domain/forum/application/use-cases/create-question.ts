@@ -3,6 +3,7 @@ import { Question } from "../../enterprise/entities/question";
 import { QuestionsRepository } from "../repositories/questions-repository";
 import { Either, right } from "@/core/either";
 import { QuestionAttachment } from "../../enterprise/entities/question-attachment";
+import { QuestionAttachmentList } from "../../enterprise/entities/questions-attachment-list";
 
 
 interface CreateQuestionUseCaseRequest {
@@ -34,14 +35,14 @@ export class CreateQuestionUseCase {
       content,
     })
 
-    const questionAttachment = attachmentIds.map((attachmentId) => {
+    const questionAttachments = attachmentIds.map((attachmentId) => {
       return QuestionAttachment.create({
         attachmentId: new UniqueEntityId(attachmentId),
         questionId: question.id
       })
     })
 
-    question.attachment = questionAttachment
+    question.attachment = new QuestionAttachmentList(questionAttachments)
 
     await this.questionsRepository.create(question)
 
