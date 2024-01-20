@@ -42,7 +42,7 @@ export class CreateQuestionUseCase {
       })
     })
 
-    question.attachment = new QuestionAttachmentList(questionAttachments)
+    question.attachments = new QuestionAttachmentList(questionAttachments)
 
     await this.questionsRepository.create(question)
 
